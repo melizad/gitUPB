@@ -1,6 +1,6 @@
 # Pasos para Colaborar
 
-### Creación  una nueva rama local
+### Creación de una nueva rama local
 
 1.  Cambiar a la rama principal
 
