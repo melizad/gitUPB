@@ -1,8 +1,7 @@
 ### Metodologías de desarrollo de software UPB
 
-# MainGirls
+# MainGirl
 
 ### Integrantes
 
 #### Seidy Meliza Daza
-#### Leidy Yohana Taborda 
