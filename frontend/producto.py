@@ -3,6 +3,7 @@ import backend.producto as Producto
 
 def listarProductos():
     Producto.listarProductos()
+    print(tabulate(productos, headers=headers, tablefmt="rounded_grid"))
 
 
 def consultarProducto():
