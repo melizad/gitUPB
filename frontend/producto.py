@@ -1,30 +1,44 @@
+from utils.terminal import limpiar
 import backend.producto as Producto
+from tabulate import tabulate
+
+headers = ["Id", "Nombre", "Precio", "Cantidad"]
 
 
 def listarProductos():
-    Producto.listarProductos()
+    productos = Producto.listarProductos()
     print(tabulate(productos, headers=headers, tablefmt="rounded_grid"))
 
 
 def consultarProducto():
     idProducto = input("Ingrese el ID del producto: ").strip()
-    Producto.consultarProducto(idProducto)
+    producto = Producto.consultarProducto(idProducto)
+
+    if producto is None:
+        print(f"\nProducto con ID '{idProducto}' no existe.\n")
+        return
+
+    print(tabulate([producto[1:]], headers=headers, tablefmt="rounded_grid"))
 
 
 def mostrarMenuDeProductos():
-    bienvenida = "PRODUCTOS"
+    separador = "------------------------------------"
+    bienvenida = "TIENDA"
     opciones = {
         "1": listarProductos,
         "2": consultarProducto,
     }
 
-    while True:
-        print(f"{bienvenida}\n1. Listar productos\n2. Buscar producto\n3. Salir")
-        opcion = input("Ingrese una opción: ")
-        print()
+    solicitud = "Ingrese una opción: "
+    salida = False
+
+    while not salida:
+        menu = f"{bienvenida if salida == False else separador}\n1. Listar productos\n2. Buscar producto\n3. Salir\n"
+        print(menu)
+        opcion = input(solicitud)
 
         if opcion == "3":
-            break
+            salida = True
         elif opcion in opciones:
             opciones[opcion]()
         else:
