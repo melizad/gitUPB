@@ -1,7 +1,8 @@
 ### Metodologías de desarrollo de software UPB
 
-# MainGirl
+# MainSE
 
 ### Integrantes
 
 #### Seidy Meliza Daza
+#### Sebastián Gallego
