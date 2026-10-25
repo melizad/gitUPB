@@ -1,0 +1,35 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache y artefactos
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.Python
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage/
+htmlcov/
+
+# Archivos de entorno y secretos
+.env
+.env.*
+*.log
+
+# Configuraciones locales del editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
