@@ -2,7 +2,7 @@ from utils.terminal import limpiar
 import backend.producto as Producto
 from tabulate import tabulate
 
-headers = ["Id", "Nombre", "Precio", "Cantidad"]
+headers = ["Id", "Nombre", "Cantidad", "Precio"]
 
 
 def listarProductos():
@@ -51,6 +51,8 @@ def mostrarMenuDeProductos():
     opciones = {
         "1": listarProductos,
         "2": consultarProducto,
+        "3": guardarProducto,
+        "4": eliminarProducto,
         "5": actualizarProducto,
     }
 
@@ -58,7 +60,7 @@ def mostrarMenuDeProductos():
     salida = False
 
     while not salida:
-        menu = f"{bienvenida if salida == False else separador}\n1. Listar productos\n2. Buscar producto\n5. Actualizar producto\n6. Salir\n"
+        menu = f"{bienvenida if salida == False else separador}\n1. Listar productos\n2. Buscar producto\n3.Guardar producto\n4. Eliminar producto\n5. Actualizar producto\n6. Salir\n"
         print(menu)
         opcion = input(solicitud)
 
@@ -68,3 +70,31 @@ def mostrarMenuDeProductos():
             opciones[opcion]()
         else:
             print("Opción invalida. Intente nuevamente.")
+def guardarProducto():
+    idProducto = input("Ingrese el ID del producto: ").strip()
+
+    if Producto.consultarProducto(idProducto) is not None:
+        print(f"\nYa existe un producto con ID '{idProducto}'.\n")
+        return
+
+    nombre = input("Ingrese el nombre: ").strip()
+    cantidad = input("Ingrese la cantidad: ").strip()
+    precio = input("Ingrese el precio: ").strip()
+
+    Producto.guardarProducto(
+        idProducto,
+        nombre,
+        cantidad,
+        precio
+    )
+
+    print(f"\nProducto con ID '{idProducto}' guardado exitosamente.\n")
+def eliminarProducto():
+    idProducto = input("Ingrese el ID del producto a eliminar: ").strip()
+
+    eliminado = Producto.eliminarProducto(idProducto)
+
+    if eliminado:
+        print(f"\nProducto con ID '{idProducto}' eliminado exitosamente.\n")
+    else:
+        print(f"\nNo existe un producto con ID '{idProducto}'.\n")
