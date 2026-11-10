@@ -61,3 +61,38 @@ def actualizarProducto(idProducto, nombre, cantidad, precio):
 
     guardar(hoja)
     return True
+
+def guardarProducto(idProducto, nombre, cantidad, precio):
+    hoja = obtenerHojaProductos()
+
+    hoja.append(
+        (
+            idProducto,
+            nombre,
+            cantidad,
+            precio
+        )
+    )
+
+    guardar(hoja)
+
+    return True
+
+def eliminarProducto(idProducto):
+    hoja = obtenerHojaProductos()
+
+    refFila = consultarProducto(
+        idProducto,
+        False
+    )
+
+    if refFila is None:
+        return False
+
+    hoja.delete_rows(
+        refFila[0].row
+    )
+
+    guardar(hoja)
+
+    return True
